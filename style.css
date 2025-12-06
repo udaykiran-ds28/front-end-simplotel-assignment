@@ -1,3 +1,9 @@
+.container {
+  width: 100%;
+  max-width: 1200px;   /* change to your preferred content width */
+  margin: 0 auto;      /* centers it */
+  padding: 0 20px;     /* keeps horizontal breathing room on small screens */
+}
 .navbar{
     width: 100%;
     background-color: #ff7a73;
@@ -6,6 +12,9 @@
     justify-content: center;
     align-items: center;
 }
+.menu-toggle:checked ~ .nav-links { display: flex; }
+
+
 .nav-links{
     display: flex;
     flex-direction: row;
@@ -48,7 +57,7 @@
 
 .hero-left {
     flex: 1;
-    padding: 60px;
+    padding: 30px;
     background: linear-gradient(90deg, #FFF6C9, #f5b1dd);
 }
 
@@ -89,7 +98,7 @@
     margin-top: 10px;
 }
 
-/* Center inner content same width as navbar/hero */
+
 .feature-inner {
     max-width: 1200px;
     width: 100%;
@@ -100,16 +109,14 @@
     gap: 60px;
 }
 
-/* LEFT: Image grid */
+
 .image-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* 2 equal columns */
+    grid-template-columns: 1fr 1fr; 
     gap: 20px;
     width: 100%;
-    align-items: stretch;           /* ensures equal height */
+    align-items: stretch;          
 }
-
-/* Left side (two stacked images) */
 .left-col {
     display: flex;
     flex-direction: column;
@@ -118,21 +125,20 @@
 
 .left-col img {
     width: 100%;
-    height: 200px;                 /* adjust as you prefer */
+    height: 200px;              
     object-fit: cover;
     border-radius: 5px;
 }
 
-/* Right side (tall image) */
+
 .right-col img {
     width: 100%;
-    height: calc(200px * 2 + 20px); /* equal to 2 images + gap */
+    height: calc(200px * 2 + 20px); 
     object-fit: cover;
     border-radius: 5px;
 }
 
 
-/* RIGHT: Red text box */
 .feature-content {
     background-color: #ff706b;
     padding: 40px 50px;
@@ -140,7 +146,7 @@
     border-radius: 4px;
 }
 
-/* Small label text */
+
 .feature-content .small-text {
     font-size: 12px;
     letter-spacing: 2px;
@@ -148,7 +154,7 @@
     color: #222;
 }
 
-/* Heading style */
+
 .feature-content h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 42px;
@@ -164,8 +170,7 @@
     font-size: 16px;
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* space between "Click" and arrow image */
-}
+    gap: 8px; }
 
 /* Arrow image styling */
 .arrow-img {
@@ -176,7 +181,7 @@
 
 
 /* RESPONSIVE */
-/* ---------- TABLETS (Portrait / Landscape) ---------- */
+
 @media screen and (max-width: 992px) {
 
     /* NAVBAR */
@@ -293,5 +298,35 @@
 
     .arrow-img {
         width: 12px;
+    }
+}
+@media (max-width: 768px) {
+
+    /* Hide desktop nav */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #ff7a73;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 10;
+    }
+
+    /* Show hamburger on mobile */
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 18px;
+    }
+
+    /* When checkbox is checked → show dropdown */
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
     }
 }
