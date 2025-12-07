@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 1200px;   /* change to your preferred content width */
+  max-width: 1000px;   /* change to your preferred content width */
   margin: 0 auto;      /* centers it */
   padding: 0 20px;     /* keeps horizontal breathing room on small screens */
 }
@@ -57,18 +57,28 @@
 
 .hero-left {
     flex: 1;
-    padding: 30px;
-    background: linear-gradient(90deg, #FFF6C9, #f5b1dd);
+    width: 90px;
+    padding: 50px;
+    background: linear-gradient(90deg, #fff6c9, #ffd7c9, #ffbbea);
 }
 
 .hero-left h1 {
     font-size: 48px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight:700;
     letter-spacing: 8px;
+    padding-left:50px;
 }
 .hero-left p{
     color: black;
+    font-weight: 400;
+    max-width: 500px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    margin: 15px 0;
+    padding-left:50px;
 }
 
 .hero-right {
@@ -86,8 +96,10 @@
     color: white;
     padding: 12px 28px;
     border: none;
-    margin-top: 20px;
+    margin-top: 60px;
+    margin-left: 50px;
     cursor: pointer;
+    padding-left:50px;
 }
 .feature-section {
     width: 100%;
@@ -174,17 +186,98 @@
 
 /* Arrow image styling */
 .arrow-img {
-    width: 14px;    /* adjust size to match screenshot */
+    width: 14px;    
     height: auto;
     display: inline-block;
 }
 
+/* Mobile menu styles */
+.hamburger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
 
-/* RESPONSIVE */
+.nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #ff7a73;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+    z-index: 1000;
+}
 
-@media screen and (max-width: 992px) {
+.menu-toggle:checked ~ .nav-links {
+    display: flex;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 992px) {
+    .hero {
+        flex-direction: row;
+        min-height: 600px;
+    }
+    
+    .hero-left,
+    .hero-right {
+        flex: 1;
+    }
+    
+    .hero-left {
+        padding: 50px;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 0;
+        width: auto;
+        background: none;
+    }
+    
+    .feature-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .feature-content {
+        width: 45%;
+    }
+    
+    .image-grid {
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+
+/* Tablet styles */
+@media screen and (max-width: 991px) {
+    /* GLOBAL CONTAINER */
+    .container {
+        padding: 0 15px;
+    }
 
     /* NAVBAR */
+    .navbar {
+        padding: 0 15px;
+    }
+    
     .nav-links {
         gap: 40px;
     }
@@ -193,11 +286,13 @@
     .hero {
         flex-direction: column;
         min-height: auto;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-left,
     .hero-right {
-        width: 100%;
+        width: 90%;
         flex: none;
     }
 
@@ -225,52 +320,134 @@
     }
 }
 
-/* ---------- MOBILE (Large Phones) ---------- */
+/* Mobile styles */
 @media screen and (max-width: 768px) {
-
-    /* NAVBAR */
-    .nav-links {
-        display: none;   /* hide menu links — show hamburger if added */
-    }
-
-    /* HERO */
-    .hero-left h1 {
-        font-size: 34px;
-        letter-spacing: 4px;
-    }
-
-    .hero-left {
-        padding: 30px;
-    }
-
-    .hero-btn {
-        padding: 10px 22px;
-    }
-
-    /* 2x2 Grid → Stacked images */
-    .image-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .right-col img {
-        height: auto; /* allow natural height */
-    }
-
-    .feature-content h1 {
-        font-size: 32px;
-    }
-
+    /* Ensure all sections take full width */
+    .hero,
+    .hero-left,
+    .hero-right,
+    .feature-section,
+    .feature-inner,
+    .image-grid,
     .feature-content {
-        padding: 30px 25px;
-        text-align: left;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Reset any negative margins */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Make sure images don't overflow */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Fix the hero section */
+    .hero {
+        flex-direction: column;
+    }
+    
+    .hero-left {
+        padding: 30px 15px !important;
+    }
+    
+    /* Fix the feature section */
+    .feature-section {
+        padding: 30px 0;
+    }
+    
+    .feature-inner {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 15px !important;
+    }
+    
+    .feature-content {
+        padding: 25px 20px !important;
+        margin: 0 !important;
+    }
+    
+    /* Fix the image grid */
+    .image-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .left-col,
+    .right-col {
+        width: 100% !important;
+    }
+    
+    .left-col img,
+    .right-col img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
     }
 }
 
 /* ---------- SMALL MOBILE (≤ 480px) ---------- */
 @media screen and (max-width: 480px) {
+    /* GLOBAL CONTAINER */
+    .container {
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
+    /* NAVBAR */
     .navbar {
         height: 50px;
+        padding: 0 15px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
+    /* HERO SECTION */
+    .hero-left {
+        width: 100%;
+        padding: 30px 15px;
+        box-sizing: border-box;
+    }
+    
+    .hero-left h1 {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+    
+    .hero-btn {
+        margin-top: 30px;
+    }
+    
+    /* FEATURE SECTION */
+    .feature-section {
+        padding: 30px 0;
+    }
+    
+    .feature-inner {
+        flex-direction: column;
+        padding: 0 15px;
+        gap: 30px;
+    }
+    
+    .feature-content {
+        width: 100%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+    }
+    
+    .feature-content h1 {
+        font-size: 32px;
     }
 
     .hero-left h1 {
